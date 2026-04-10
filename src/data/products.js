@@ -1,21 +1,35 @@
 
 
  export const products = [
+
+
+   {
+    id: "4",
+    name: "Barcelona Home Jersey 24/25",
+    price: 260,
+    image: "/barca-home.jpg",
+    league: "La Liga",
+    sizes: ["S", "M", "L", "XL"],
+    tag: "Popular",
+  },
+  
   {
     id: "1",
     name: "Arsenal Home Jersey 24/25",
     price: 250,
     image: "/as.jpg",
-    club: "Arsenal",
+    league: "Premier League",
     sizes: ["S", "M", "L", "XL"],
     tag: "New",
   },
+
+
   {
     id: "2",
     name: "Real Madrid Home Jersey 24/25",
     price: 280,
     image: "/madrid-home.webp",
-    club: "Real Madrid",
+    league: "La Liga",
     sizes: ["S", "M", "L", "XL"],
     tag: "Best Seller",
   },
@@ -24,25 +38,17 @@
     name: "Manchester City Away Jersey 24/25",
     price: 240,
     image: "/mancity-home.webp",
-    club: "Manchester City",
+    league: "Premier League",
     sizes: ["M", "L", "XL"],
     tag: "New",
   },
-  {
-    id: "4",
-    name: "Barcelona Home Jersey 24/25",
-    price: 260,
-    image: "/barca-home.jpg",
-    club: "FC Barcelona",
-    sizes: ["S", "M", "L", "XL"],
-    tag: "Popular",
-  },
+ 
   {
     id: "5",
     name: "Liverpool Home Jersey 24/25",
     price: 230,
     image: "/liverpool-home.jpg",
-    club: "Liverpool",
+    league: "Premier League",
     sizes: ["S", "M", "L"],
     tag: "Sale",
   },
@@ -51,7 +57,7 @@
     name: "Bayern Munich Away Jersey 24/25",
     price: 255,
     image: "/byn-2.jpg",
-    club: "Bayern Munich",
+    league: "Bundesliga",
     sizes: ["S", "M", "L", "XL"],
     tag: "New",},
  
@@ -59,7 +65,7 @@
   { id: "11", name: "Chelsea Away 24/25",
    price: 240,
     image: "/chealsea-away.jpg",
-    club: "Chelsea",
+    league: "Premier League",
     sizes: ["S", "M", "L"],
      tag: "New"
      },
@@ -79,45 +85,45 @@
      name: "Brazil Home 2026",
       price: 290,
        image: "/brz.jpg",
-        club: "Brazil",
+        league: "World Cup",
          sizes: ["S", "M", "L", "XL"], 
          tag: "National" },
   { id: "62",
      name: "Argentina Home 2026",
       price: 295,
        image: "/mis-2.jpg", 
-       club: "Argentina", sizes: ["S", "M", "L", "XL"], tag: "Champions" },
+       league: "World Cup", sizes: ["S", "M", "L", "XL"], tag: "Champions" },
   { id: "63",
      name: "France Away 2026",
       price: 285,
        image: "/fran.jpg",
-        club: "France",
+        league: "World Cup",
          sizes: ["S", "M", "L", "XL"],
           tag: "National" },
 
   { id: "64",
      name: "England Away 2026"
-     , price: 280, image: "/eng-2.jpg", club: "England", sizes: ["S", "M", "L", "XL"], tag: "National" },
+     , price: 280, image: "/eng-2.jpg", league: "World Cup", sizes: ["S", "M", "L", "XL"], tag: "National" },
   { id: "65",
      name: "Germany Home 2024",
       price: 280, 
       image: "/gemen.jpg", 
-      club: "Germany",
+      league: "World Cup",
        sizes: ["S", "M", "L", "XL"], 
        tag: "National" },
   { id: "66", name:
      "Portugal Away 2026",
-      price: 275, image: "/pot.jpg", club: "Portugal", sizes: ["S", "M", "L"], tag: "New" },
+      price: 275, image: "/pot.jpg", league: "World Cup", sizes: ["S", "M", "L"], tag: "New" },
   
   { id: "68", name: "Spain Home 2026",
      price: 250, image: "/spain.jpg",
-      club: "Spain", sizes: ["M", "L", "XL"], 
+      league: "World Cup", sizes: ["M", "L", "XL"], 
       tag: "National" },
 
 
    { id: "69", name: "Ghana Home 2026",
      price: 250, image: "/ghana-1.jpg",
-      club: "ghana", sizes: ["M", "L", "XL"], 
+      league: "World Cup", sizes: ["M", "L", "XL"], 
       tag: "National" },
 
 ]; 

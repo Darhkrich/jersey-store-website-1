@@ -14,6 +14,10 @@ export default function ProductsPage() {
     "Premier League",
     "La Liga",
     "Champions League",
+    "Bundesliga",
+    "World Cup",
+    "Serie A",
+    "Ligue 1",
   ];
 
   const filteredProducts = products.filter((p) => {
@@ -72,7 +76,7 @@ export default function ProductsPage() {
         </p>
 
         {/* 🔥 GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-8">
 
           {filteredProducts.map((p) => (
             <ProductCard key={p.id} product={p} />

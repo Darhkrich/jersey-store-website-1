@@ -59,7 +59,7 @@ export default function Home() {
           New Season Kits 🔥
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-10">
 
           {products.slice(0, 8).map((p) => (
             <ProductCard key={p.id} product={p} />
@@ -76,7 +76,7 @@ export default function Home() {
           Shop By Club
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 
           {["Arsenal", "Chelsea", "Man United", "Barcelona"].map((club) => (
             <div
@@ -98,7 +98,7 @@ export default function Home() {
           Popular Right Now 🔥
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-10">
 
           {products.slice(9, 66).map((p) => (
             <ProductCard key={p.id} product={p} />
