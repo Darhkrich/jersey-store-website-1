@@ -1,7 +1,7 @@
 import { getCart, clearCart } from "./cartStore";
 
 export const checkoutWhatsApp = () => {
-  const phone = "233XXXXXXXXX"; // replace with your number
+  const phone = "0559423149"; // replace with your number
 
   const cart = getCart();
 
