@@ -1,17 +1,17 @@
 export const checkoutWhatsApp = (cart) => {
-  const phone = "233559423149"; // ✅ replace correctly
+  const phone = "233559423149";
 
   if (!Array.isArray(cart) || cart.length === 0) {
     alert("Cart is empty");
     return;
   }
 
-  const message = cart
-    .map((item) => {
-      return `Item: ${item.name}
-Size: ${item.size}
-Qty: ${item.quantity}
-Price: GH₵${item.price}`;
+  const itemsText = cart
+    .map((item, index) => {
+      return `${index + 1}. ${item.name}
+   Size: ${item.size}
+   Qty: ${item.quantity}
+   Price: GH₵${item.price}`;
     })
     .join("\n\n");
 
@@ -20,14 +20,15 @@ Price: GH₵${item.price}`;
     0
   );
 
-  const finalMessage = `${message}
+  const message = `Hello, I want to place an order:
 
-Total: GH₵${total}`;
+${itemsText}
 
-  const encoded = encodeURIComponent(finalMessage);
+Total Amount: GH₵${total}
 
-  const url = `https://wa.me/${phone}?text=${encoded}`;
+Please confirm availability and delivery.`;
 
-  // 🔥 IMPORTANT (better than window.open)
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
   window.location.href = url;
 };
