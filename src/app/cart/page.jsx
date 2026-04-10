@@ -13,14 +13,20 @@ export default function CartPage() {
   const [cart, setCart] = useState([]);
 
   const loadCart = () => {
-    setCart(getCart());
+    const data = getCart();
+    setCart(Array.isArray(data) ? data : []);
   };
 
   useEffect(() => {
     loadCart();
-    window.addEventListener("cartUpdated", loadCart);
-    return () =>
-      window.removeEventListener("cartUpdated", loadCart);
+
+    const handleUpdate = () => loadCart();
+
+    window.addEventListener("cartUpdated", handleUpdate);
+
+    return () => {
+      window.removeEventListener("cartUpdated", handleUpdate);
+    };
   }, []);
 
   const total = cart.reduce(
@@ -30,11 +36,9 @@ export default function CartPage() {
 
   return (
     <div>
-
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-6 py-20">
-
         <h1 className="text-3xl font-bold mb-10">
           Your Cart
         </h1>
@@ -46,18 +50,19 @@ export default function CartPage() {
         ) : (
           <div className="grid md:grid-cols-3 gap-10">
 
-            {/* 🔥 ITEMS */}
+            {/* ITEMS */}
             <div className="md:col-span-2 space-y-6">
 
-              {cart.map((item, index) => (
+              {cart.map((item) => (
                 <div
-                  key={index}
+                  key={`${item.id}-${item.size}`}
                   className="flex gap-4 bg-[#111] p-5 rounded-2xl border border-white/5 hover:border-green-500/30 transition"
                 >
 
                   {/* IMAGE */}
                   <img
-                    src={item.image}
+                    src={item.image || "/placeholder.png"}
+                    alt={item.name}
                     className="w-24 h-24 object-cover rounded-lg"
                   />
 
@@ -76,13 +81,14 @@ export default function CartPage() {
                       Size: {item.size}
                     </p>
 
-                    {/* 🔥 QUANTITY */}
+                    {/* QUANTITY */}
                     <div className="flex items-center gap-3 mt-3">
 
                       <button
-                        onClick={() =>
-                          updateQuantity(item.id, item.size, -1)
-                        }
+                        onClick={() => {
+                          updateQuantity(item.id, item.size, -1);
+                          loadCart();
+                        }}
                         className="px-3 py-1 bg-[#222] rounded"
                       >
                         -
@@ -91,9 +97,10 @@ export default function CartPage() {
                       <span>{item.quantity}</span>
 
                       <button
-                        onClick={() =>
-                          updateQuantity(item.id, item.size, 1)
-                        }
+                        onClick={() => {
+                          updateQuantity(item.id, item.size, 1);
+                          loadCart();
+                        }}
                         className="px-3 py-1 bg-[#222] rounded"
                       >
                         +
@@ -103,9 +110,10 @@ export default function CartPage() {
 
                     {/* REMOVE */}
                     <button
-                      onClick={() =>
-                        removeFromCart(item.id, item.size)
-                      }
+                      onClick={() => {
+                        removeFromCart(item.id, item.size);
+                        loadCart();
+                      }}
                       className="text-red-400 text-sm mt-2"
                     >
                       Remove
@@ -118,7 +126,7 @@ export default function CartPage() {
 
             </div>
 
-            {/* 🔥 SUMMARY */}
+            {/* SUMMARY */}
             <div className="bg-[#111] p-6 rounded-2xl h-fit border border-white/5 shadow-lg">
 
               <h2 className="text-xl font-bold mb-4">
@@ -133,7 +141,7 @@ export default function CartPage() {
               </p>
 
               <button
-                onClick={checkoutWhatsApp}
+                onClick={() => checkoutWhatsApp(cart)} // ✅ FIXED HERE
                 className="mt-6 w-full bg-green-500 text-black py-3 rounded-lg font-medium hover:bg-green-400 transition"
               >
                 Order via WhatsApp
@@ -143,9 +151,7 @@ export default function CartPage() {
 
           </div>
         )}
-
       </div>
-
     </div>
   );
 }

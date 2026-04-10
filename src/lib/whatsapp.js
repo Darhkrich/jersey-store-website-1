@@ -1,28 +1,29 @@
-import { getCart, clearCart } from "./cartStore";
+export const checkoutWhatsApp = (cart) => {
+  const phone = "0559423149";
 
-export const checkoutWhatsApp = () => {
-  const phone = "0559423149"; // replace with your number
+  // Ensure cart is an array
+  const cartItems = Array.isArray(cart) ? cart : cart?.items || [];
 
-  const cart = getCart();
+  if (cartItems.length === 0) {
+    alert("Cart is empty");
+    return;
+  }
 
-  if (!cart.length) return;
+  const message = cartItems
+    .map(
+      (item) =>
+        `🛍️ ${item.name}\nSize: ${item.size}\nQty: ${item.quantity}\nPrice: GH₵${item.price}`
+    )
+    .join("\n\n");
 
-  let message = "Hello, I want to order:\n\n";
-
-  cart.forEach((item) => {
-    message += `- ${item.name} (${item.size}) x${item.quantity}\n`;
-  });
-
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
     0
   );
 
-  message += `\nTotal: GH₵${total}`;
+  const fullMessage = `${message}\n\nTotal: GH₵${total}`;
 
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(fullMessage)}`;
 
   window.open(url, "_blank");
-
-  clearCart();
 };
